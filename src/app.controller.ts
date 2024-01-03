@@ -9,4 +9,24 @@ export class AppController {
   getHello(): string {
     return this.appService.getHello();
   }
+
+  @Get('hello2')
+  getHello2(): string {
+    return this.appService.getHello();
+  }
+
+  @Get('hello3')
+  getHello3(): string {
+    return this.appService.getHello();
+  }
+
+  @Get('world')
+  getWorld(): string {
+    return this.appService.getHello();
+  }
+
+  @Get('world2')
+  getWorld2(): string {
+    return this.appService.getHello();
+  }
 }

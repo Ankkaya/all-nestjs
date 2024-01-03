@@ -38,11 +38,6 @@ export class PersonController {
     return `received: ${JSON.stringify(createPersonDto)}`;
   }
 
-  @Post()
-  create(@Body() createPersonDto: CreatePersonDto) {
-    return this.personService.create(createPersonDto);
-  }
-
   @Get()
   findAll() {
     return this.personService.findAll();

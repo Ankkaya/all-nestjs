@@ -9,11 +9,14 @@ import {
   Query,
   UseInterceptors,
   UploadedFiles,
+  ValidationPipe,
 } from '@nestjs/common';
 import { AnyFilesInterceptor } from '@nestjs/platform-express';
 import { PersonService } from './person.service';
 import { CreatePersonDto } from './dto/create-person.dto';
 import { UpdatePersonDto } from './dto/update-person.dto';
+import { Ooo } from './dto/Ooo.dto';
+import { MyValidationPipe } from 'src/my-validation.pipe';
 
 @Controller('person')
 export class PersonController {
@@ -66,5 +69,22 @@ export class PersonController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.personService.remove(+id);
+  }
+
+  @Post('ooo')
+  ooo(@Body(new ValidationPipe()) obj: Ooo) {
+    console.log(obj);
+    return obj;
+  }
+
+  // @Post('ooo2')
+  // ooo2(@Body(new MyValidationPipe()) obj: Ooo) {
+  //   console.log(obj);
+  // }
+
+  // MyValidationPipe 注入后，不能用 new 方式
+  @Post('ooo2')
+  ooo2(@Body(MyValidationPipe) obj: Ooo) {
+    console.log(obj);
   }
 }
